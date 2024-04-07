@@ -9,7 +9,7 @@ data class AdRaw(
     @SerializedName("location_name") val locationName: String,
     @SerializedName("name") val name: String,
     @SerializedName("price") val price: String,
-    @SerializedName("currency") val currency: String,
+    @SerializedName("currency") val currency: String?,
     @SerializedName("price_fixed") val priceFixed: String,
     @SerializedName("photo1_tmb_300x300") val photoThumbnailUrl: String,
     @SerializedName("favorite_count") val favoriteCount: Int,

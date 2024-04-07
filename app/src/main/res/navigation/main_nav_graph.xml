@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/adListFragment"
         android:name="com.quable.kupujemprodajem.features.list.AdListFragment"
-        android:label="AdListFragment" >
+        android:label="AdListFragment">
         <action
             android:id="@+id/action_adListFragment_to_previewAdFragment"
             app:destination="@id/previewAdFragment" />
@@ -15,10 +15,10 @@
     <fragment
         android:id="@+id/previewAdFragment"
         android:name="com.quable.kupujemprodajem.features.single.PreviewAdFragment"
-        android:label="PreviewAdFragment" >
+        android:label="PreviewAdFragment">
         <argument
-            android:name="ad_id"
-            app:argType="long" />
+            android:name="ad_view"
+            app:argType="com.quable.kupujemprodajem.features.AdView" />
     </fragment>
 
 </navigation>

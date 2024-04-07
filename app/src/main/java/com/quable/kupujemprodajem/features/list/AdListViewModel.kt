@@ -16,7 +16,7 @@ class AdListViewModel @Inject constructor(
     val flow = Pager(
         PagingConfig(
             initialLoadSize = 10,
-            pageSize = 10,
+            pageSize = 11,
         ),
     ) {
         AdPagingSource(getAds)

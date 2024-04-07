@@ -7,18 +7,19 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.quable.kupujemprodajem.R
 import com.quable.kupujemprodajem.base.BaseActionBarFragment
-import com.quable.kupujemprodajem.databinding.FragmentAdvertListBinding
+import com.quable.kupujemprodajem.databinding.FragmentAdListBinding
+import com.quable.kupujemprodajem.features.AdView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AdListFragment : BaseActionBarFragment<FragmentAdvertListBinding, AdListViewModel>() {
+class AdListFragment : BaseActionBarFragment<FragmentAdListBinding, AdListViewModel>() {
 
     @Inject
     lateinit var pagingAdapter: AdPagingDataAdapter
-    override fun provideLayoutId(): Int = R.layout.fragment_advert_list
+    override fun provideLayoutId(): Int = R.layout.fragment_ad_list
 
     override fun provideViewModelClass() = AdListViewModel::class.java
 
@@ -48,11 +49,9 @@ class AdListFragment : BaseActionBarFragment<FragmentAdvertListBinding, AdListVi
         }
     }
 
-    private fun onItemClicked(itemId: Long) {
+    private fun onItemClicked(item: AdView) {
         findNavController().navigate(
-            AdListFragmentDirections.actionAdListFragmentToPreviewAdFragment(
-                itemId,
-            ),
+            AdListFragmentDirections.actionAdListFragmentToPreviewAdFragment(item),
         )
     }
 }

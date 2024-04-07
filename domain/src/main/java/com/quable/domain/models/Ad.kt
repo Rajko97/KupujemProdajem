@@ -6,7 +6,7 @@ data class Ad(
     val locationName: String,
     val name: String,
     val price: String,
-    val currency: String,
+    val currency: String?,
     val priceFixed: String,
     val photoThumbnailUrl: String,
     val favoriteCount: Int,

@@ -6,7 +6,7 @@
       "ads":[
         {
           "ad_id":85732582,
-          "posted":"2023-04-12 11:16:28",
+          "posted":"2024-04-07 11:16:28",
           "location_name":"Beograd",
           "name":"Godox 5 u 1 zilberica (100x150cm)",
           "price":"40,00",
@@ -18,7 +18,7 @@
         },
         {
           "ad_id":85732179,
-          "posted":"2023-04-12 11:16:28",
+          "posted":"2024-04-06 11:16:28",
           "location_name":"Beograd",
           "name":"Godox 7 u 1 zilberica (110cm)",
           "price":"3.300",
@@ -26,11 +26,11 @@
           "price_fixed":"yes",
           "photo1_tmb_300x300":"/photos/oglasi/9/17/85732179/tmb-300x300-85732179_5dbca437081304-456464097in1110cm.jpg",
           "favorite_count":18,
-          "is_following_ad":false
+          "is_following_ad":true
         },
         {
           "ad_id":85722251,
-          "posted":"2023-04-12 11:16:28",
+          "posted":"2024-04-05 11:16:28",
           "location_name":"Beograd",
           "name":"Godox 5 u 1 zilberica (110cm)",
           "price":"25,00",
@@ -50,7 +50,7 @@
           "price_fixed":"yes",
           "photo1_tmb_300x300":"/photos/oglasi/9/08/85620089/tmb-300x300-85620089_63a03a36ce3749-41436739tenba_cineluxe_.jpg",
           "favorite_count":5,
-          "is_following_ad":false
+          "is_following_ad":true
         },
         {
           "ad_id":85601610,

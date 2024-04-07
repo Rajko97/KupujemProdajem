@@ -7,24 +7,25 @@ import androidx.databinding.BindingAdapter
 import coil.load
 import coil.size.Scale
 import com.quable.kupujemprodajem.R
+import com.quable.kupujemprodajem.common.Constants.Companion.IMAGES_BASE_URL
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
 @BindingAdapter("android:bindCurrency")
-fun TextView.addCurrency(currency: String) {
+fun TextView.addCurrency(currency: String?) {
     post {
         when (currency) {
             "eur" -> this.append(" €")
             "rsd" -> this.append(" din")
+            else -> this.append("DOGOVOR")
         }
     }
 }
 
 @BindingAdapter("android:setPassedDays")
 fun TextView.setPassedDays(dateTimeText: String) {
-
     fun getTextBasedOnDate(dateTime: LocalDateTime): String {
         val today = LocalDate.now()
         val yesterday = today.minusDays(1)
@@ -36,7 +37,7 @@ fun TextView.setPassedDays(dateTimeText: String) {
         return when {
             date == today -> ", danas"
             date == yesterday -> ", juče"
-            (daysDifference % 10).toInt() == 1 -> ", pre $daysDifference dan"
+            daysDifference % 10 == 1L -> ", pre $daysDifference dan"
             else -> ", pre $daysDifference dana"
         }
     }
@@ -50,7 +51,7 @@ fun TextView.setPassedDays(dateTimeText: String) {
 @BindingAdapter("android:setImageAsync")
 fun ImageView.setImageAsync(uri: String?) {
     uri?.let {
-        this.load("https://images.kupujemprodajem.com$it") {
+        this.load("$IMAGES_BASE_URL$it") {
             placeholder(R.drawable.ic_launcher_foreground)
             scale(Scale.FIT)
         }
