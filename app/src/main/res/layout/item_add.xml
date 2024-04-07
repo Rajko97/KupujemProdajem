@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.quable.kupujemprodajem.features.list.AdListItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{() -> vm.onItemClicked()}"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/img_thumbnail"
+            android:layout_width="96dp"
+            android:layout_height="90dp"
+            android:background="@drawable/bg_boarders"
+            android:scaleType="centerCrop"
+            android:setImageAsync="@{vm.item.photoThumbnailUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:ellipsize="end"
+            android:lineHeight="20sp"
+            android:maxLines="2"
+            android:text="@{vm.item.name}"
+            android:textColor="@color/dark_midnight_blue"
+            android:textFontWeight="400"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/img_favorites_status"
+            app:layout_constraintStart_toEndOf="@id/img_thumbnail"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            tools:text="205 55 17 kuhmo 2kom letnje 6mm dot 2015" />
+
+        <TextView
+            android:id="@+id/txt_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:lineHeight="20sp"
+            android:text="@{vm.item.locationName}"
+            android:textColor="@color/ironside_gray"
+            android:textFontWeight="400"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/img_thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/txt_title"
+            tools:text="Beograd" />
+
+        <TextView
+            android:id="@+id/txt_posted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineHeight="20sp"
+            android:setPassedDays="@{vm.item.posted}"
+            android:textColor="@color/ironside_gray"
+            android:textFontWeight="400"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/txt_location"
+            app:layout_constraintStart_toEndOf="@id/txt_location"
+            tools:text=", pre 18 dana" />
+
+        <TextView
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:lineHeight="20sp"
+            android:bindCurrency="@{vm.item.currency}"
+            android:text="@{vm.item.price}"
+            android:textColor="@color/rosso_corsa"
+            android:textFontWeight="700"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_thumbnail"
+            tools:text="35,00e" />
+
+        <ImageView
+            android:id="@+id/img_favorites_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:setFavoritesIcon="@{vm.item.followingAd}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_star_blank" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

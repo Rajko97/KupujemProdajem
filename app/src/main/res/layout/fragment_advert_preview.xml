@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.quable.kupujemprodajem.features.single.PreviewAdvertFragment" />
+            type="com.quable.kupujemprodajem.features.single.PreviewAdViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

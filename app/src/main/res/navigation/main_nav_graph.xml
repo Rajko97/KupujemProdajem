@@ -2,15 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph.xml"
-    app:startDestination="@id/advertListFragment">
+    app:startDestination="@id/adListFragment">
 
     <fragment
-        android:id="@+id/advertListFragment"
-        android:name="com.quable.kupujemprodajem.features.list.AdvertListFragment"
-        android:label="AdvertListFragment" />
+        android:id="@+id/adListFragment"
+        android:name="com.quable.kupujemprodajem.features.list.AdListFragment"
+        android:label="AdListFragment" >
+        <action
+            android:id="@+id/action_adListFragment_to_previewAdFragment"
+            app:destination="@id/previewAdFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/previewAdvertFragment"
-        android:name="com.quable.kupujemprodajem.features.single.PreviewAdvertFragment"
-        android:label="PreviewAdvertFragment" />
+        android:id="@+id/previewAdFragment"
+        android:name="com.quable.kupujemprodajem.features.single.PreviewAdFragment"
+        android:label="PreviewAdFragment" >
+        <argument
+            android:name="ad_id"
+            app:argType="long" />
+    </fragment>
 
 </navigation>
