@@ -2,11 +2,13 @@ package com.quable.data
 
 import android.content.res.AssetManager
 import com.google.gson.Gson
+import com.quable.data.assets.entities.AdDetailsRaw
 import com.quable.data.assets.entities.AdRaw
 import com.quable.data.assets.entities.AdsResponseRaw
 import com.quable.data.assets.entities.toDomain
 import com.quable.domain.AdRepository
 import com.quable.domain.models.Ad
+import com.quable.domain.models.AdDetails
 import com.quable.domain.models.AdsResponse
 import org.json.JSONArray
 import org.json.JSONObject
@@ -21,8 +23,8 @@ class AdRepositoryImpl @Inject constructor(
 
     private val data: JSONObject = JSONObject(loadAssetFile())
     private val allAdsList = data.getJSONArray("listaOglasa").extractAds().map { it.toDomain() }
-
-    // val addDetailsList: JSONArray = data.getJSONArray("detaljiOglasa")
+    private val adDetailsList =
+        data.getJSONArray("detaljiOglasa").extractDetailsAds().map { it.toDomain() }
 
     override fun getAds(page: Int?): AdsResponse {
         return AdsResponse(
@@ -30,6 +32,10 @@ class AdRepositoryImpl @Inject constructor(
             page = page ?: 1,
             ads = getPage(allAdsList, (page ?: 1) - 1),
         )
+    }
+
+    override fun getAdsDetails(adId: String): AdDetails? {
+        return adDetailsList.find { it.adId == adId }
     }
 
     private fun loadAssetFile(): String {
@@ -65,6 +71,18 @@ private fun JSONArray.extractAds() =
                     this@extractAds.getJSONObject(i).toString(),
                     AdsResponseRaw::class.java,
                 ).ads,
+            )
+        }
+    }
+
+private fun JSONArray.extractDetailsAds() =
+    mutableListOf<AdDetailsRaw>().apply {
+        for (i in 0..<this@extractDetailsAds.length()) {
+            add(
+                Gson().fromJson(
+                    this@extractDetailsAds.getJSONObject(i).toString(),
+                    AdDetailsRaw::class.java,
+                ),
             )
         }
     }

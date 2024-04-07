@@ -3,4 +3,5 @@
 
     <string name="page_index">%1$s od %2$s</string>
     <string name="all_rights_reserved">KupujemProdajem © 2022 All rights reserved</string>
+    <string name="category_label">Kategorija:</string>
 </resources>

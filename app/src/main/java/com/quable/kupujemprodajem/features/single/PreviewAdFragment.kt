@@ -12,13 +12,20 @@ import dagger.hilt.android.AndroidEntryPoint
 class PreviewAdFragment :
     BaseActionBarFragment<FragmentAdPreviewBinding, PreviewAdViewModel>() {
 
-    val args: PreviewAdFragmentArgs by navArgs()
+    private val args: PreviewAdFragmentArgs by navArgs()
     override fun provideLayoutId(): Int = R.layout.fragment_ad_preview
 
     override fun provideViewModelClass() = PreviewAdViewModel::class.java
 
     override fun setupUi() {
-        binding.layoutId.vm = AdListItemViewModel(args.adView) {}
+        binding.layoutId.vm = AdListItemViewModel(args.adView)
+        binding.layoutId.layoutItemAd.apply {
+            isClickable = false
+            isFocusable = false
+            foreground = null
+            isSoundEffectsEnabled = false
+        }
+        viewModel.initializeData(args.adView.id.toString())
     }
 
     override fun subscribeObservers() {}

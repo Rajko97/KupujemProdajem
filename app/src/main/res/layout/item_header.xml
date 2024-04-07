@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/white"
+        android:background="@drawable/bg_top_border_only"
         android:gravity="center"
         android:padding="8dp"
         android:text="@{@string/page_index(vm.item.currentPage, vm.item.totalPages)}" />

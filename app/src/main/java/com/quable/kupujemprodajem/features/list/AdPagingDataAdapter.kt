@@ -12,7 +12,7 @@ class AdPagingDataAdapter @Inject constructor() :
     lateinit var onItemClicked: (AdView) -> Unit
 
     override fun provideLayoutId(position: Int) = when (getItem(position)!!) {
-        is AdListItemView.AdItemView -> R.layout.item_add
+        is AdListItemView.AdItemView -> R.layout.item_ad
         is AdListItemView.HeaderItemView -> R.layout.item_header
     }
 

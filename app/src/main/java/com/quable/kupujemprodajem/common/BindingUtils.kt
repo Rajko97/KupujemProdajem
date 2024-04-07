@@ -1,8 +1,13 @@
 package com.quable.kupujemprodajem.common
 
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import coil.load
 import coil.size.Scale
@@ -46,6 +51,39 @@ fun TextView.setPassedDays(dateTimeText: String) {
     val dateTime = LocalDateTime.parse(dateTimeText, formatter)
 
     text = getTextBasedOnDate(dateTime)
+}
+
+@BindingAdapter("android:setCategoryText", "android:setGroupText", requireAll = false)
+fun TextView.setCategoryText(category: String, group: String) {
+    fun createSpannableString(category: String, group: String): Spannable {
+        val spannableStringBuilder = SpannableStringBuilder()
+
+        // Append category text
+        spannableStringBuilder.append(category)
+
+        // Append separator with black color span
+        val blackStart = spannableStringBuilder.length
+        spannableStringBuilder.append(" > ")
+        val blackColorSpan = ForegroundColorSpan(Color.BLACK)
+        spannableStringBuilder.setSpan(
+            blackColorSpan,
+            blackStart,
+            spannableStringBuilder.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE,
+        )
+
+        // Append group text
+        spannableStringBuilder.append(group)
+
+        return spannableStringBuilder
+    }
+
+    text = createSpannableString(category, group)
+}
+
+@BindingAdapter("android:setHtml")
+fun TextView.setHtml(text: String) {
+    setText(HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY))
 }
 
 @BindingAdapter("android:setImageAsync")

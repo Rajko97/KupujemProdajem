@@ -11,6 +11,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_item_ad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -24,7 +25,7 @@
             android:id="@+id/img_thumbnail"
             android:layout_width="96dp"
             android:layout_height="90dp"
-            android:background="@drawable/bg_boarders"
+            android:background="@drawable/bg_borders"
             android:scaleType="centerCrop"
             android:setImageAsync="@{vm.item.photoThumbnailUrl}"
             app:layout_constraintBottom_toBottomOf="parent"

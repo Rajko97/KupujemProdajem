@@ -41,7 +41,7 @@
                     android:clipToPadding="false"
                     android:paddingVertical="16dp"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:listitem="@layout/item_add" />
+                    tools:listitem="@layout/item_ad" />
 
                 <TextView
                     android:layout_width="match_parent"

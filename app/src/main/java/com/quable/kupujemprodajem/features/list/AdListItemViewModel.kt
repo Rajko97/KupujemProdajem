@@ -5,10 +5,10 @@ import com.quable.kupujemprodajem.features.AdView
 
 class AdListItemViewModel(
     val item: AdView,
-    private val onItemClicked: (AdView) -> Unit,
+    private val onItemClicked: ((AdView) -> Unit)? = null,
 ) : ViewModel() {
 
     fun onItemClicked() {
-        onItemClicked.invoke(item)
+        onItemClicked?.invoke(item)
     }
 }
