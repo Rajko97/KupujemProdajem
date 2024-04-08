@@ -22,6 +22,8 @@ class PreviewAdViewModel @Inject constructor(
     private val _adBasicLive = MutableLiveData<AdView>(AdView())
     private val _adDetailsLive = MutableLiveData<AdDetailsView>(AdDetailsView())
 
+    private var currentAdId: Long = -1
+
     val adBasicLive: LiveData<AdView>
         get() = _adBasicLive
     val adDetailsLive: LiveData<AdDetailsView>
@@ -55,6 +57,7 @@ class PreviewAdViewModel @Inject constructor(
     }
 
     fun initializeData(id: Long) {
+        currentAdId = id
         val adBasicData = getAd.execute(id)
         val adDetailsData = getAdDetails.execute(id.toString())
         if (adBasicData == null || adDetailsData == null) {
@@ -67,20 +70,16 @@ class PreviewAdViewModel @Inject constructor(
     }
 
     fun onSwipeLeft() {
-        _adBasicLive.value?.let {
-            setLoadingState()
-            getFollowingAd.execute(it.id)?.let { prevAd ->
-                initializeData(prevAd.id)
-            }
+        setLoadingState()
+        getFollowingAd.execute(currentAdId)?.let { prevAd ->
+            initializeData(prevAd.id)
         }
     }
 
     fun onSwipeRight() {
-        _adBasicLive.value?.let {
-            setLoadingState()
-            getPreviousAd.execute(it.id)?.let { nextAd ->
-                initializeData(nextAd.id)
-            }
+        setLoadingState()
+        getPreviousAd.execute(currentAdId)?.let { nextAd ->
+            initializeData(nextAd.id)
         }
     }
 }
