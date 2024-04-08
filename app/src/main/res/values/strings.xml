@@ -10,4 +10,5 @@
     <string name="yesterday">juče</string>
     <string name="before_days_one">pre %1$d dan</string>
     <string name="before_days_other">pre %1$d dana</string>
+    <string name="ad_is_removed">Oglas je obrisan</string>
 </resources>

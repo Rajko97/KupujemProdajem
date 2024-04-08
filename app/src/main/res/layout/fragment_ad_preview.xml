@@ -19,7 +19,7 @@
             android:id="@+id/action_bar_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="2dp"
+            android:elevation="@dimen/elevation_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
             android:id="@+id/layout_empty_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/padding_medium"
             android:visibility="@{vm.isErrorLive()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/action_bar_main">
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_vertical_dividers"
-                android:padding="8dp"
+                android:padding="@dimen/padding_small"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
@@ -54,10 +54,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Oglas je obrisan"
+                    android:layout_marginStart="@dimen/padding_small"
+                    android:text="@string/ad_is_removed"
                     android:textColor="@color/mercury"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/text_extra_large"
                     app:layout_constraintStart_toEndOf="@id/img_no_image"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,10 +74,10 @@
                 android:id="@+id/txt_copy_rights2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium"
                 android:gravity="center"
-                android:layout_marginTop="16dp"
                 android:text="@string/all_rights_reserved"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_medium"
                 app:layout_constraintTop_toBottomOf="@id/layout_empty_ad" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -99,7 +99,7 @@
                     layout="@layout/item_ad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/padding_medium"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -108,9 +108,9 @@
                     android:id="@+id/layout_category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/padding_medium"
                     android:background="@drawable/bg_vertical_dividers"
-                    android:padding="16dp"
+                    android:padding="@dimen/padding_medium"
                     app:layout_constraintTop_toBottomOf="@id/layoutId">
 
                     <TextView
@@ -127,7 +127,7 @@
                         android:id="@+id/category_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:paddingHorizontal="16dp"
+                        android:paddingHorizontal="@dimen/padding_medium"
                         android:setCategoryText="@{vm.adDetailsLive.categoryName}"
                         android:setGroupText="@{vm.adDetailsLive.groupName}"
                         android:textColor="@color/dark_midnight_blue"
@@ -141,12 +141,12 @@
                     android:id="@+id/txt_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/padding_medium"
                     android:background="@drawable/bg_vertical_dividers"
-                    android:padding="16dp"
+                    android:padding="@dimen/padding_medium"
                     android:setHtml="@{vm.adDetailsLive.description}"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_medium"
                     app:layout_constraintTop_toBottomOf="@id/layout_category"
                     tools:text="Prodajem 2 auto gume za manje džipove (Suzuki Samurai, Jimny, Vitara) u dimenziji 195 65 R15.
 
@@ -157,7 +157,7 @@ Više informacija kroz poruke ili na poziv. Cena fiksna. Srećna kupovina." />
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="@dimen/padding_medium"
                     android:background="@drawable/bg_vertical_dividers"
                     android:setImageAsync="@{vm.adDetailsLive.photos}"
                     app:layout_constraintBottom_toTopOf="@id/txt_copy_rights"
@@ -169,9 +169,9 @@ Više informacija kroz poruke ili na poziv. Cena fiksna. Srećna kupovina." />
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:paddingBottom="16dp"
+                    android:paddingBottom="@dimen/padding_medium"
                     android:text="@string/all_rights_reserved"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_medium"
                     app:layout_constraintBottom_toBottomOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
