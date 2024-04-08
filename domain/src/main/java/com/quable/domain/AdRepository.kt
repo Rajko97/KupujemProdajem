@@ -1,11 +1,15 @@
 package com.quable.domain
 
-import com.quable.domain.models.AdDetails
+import com.quable.domain.models.Ad
 import com.quable.domain.models.AdsResponse
 
 interface AdRepository {
 
     fun getAds(page: Int? = 1): AdsResponse
 
-    fun getAdsDetails(adId: String): AdDetails?
+    fun getAdById(adId: Long): Ad?
+
+    fun getPreviousAdById(adId: Long): Ad?
+
+    fun getFollowingAdById(adId: Long): Ad?
 }

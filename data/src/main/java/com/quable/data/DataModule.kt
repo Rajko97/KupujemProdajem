@@ -1,6 +1,7 @@
 package com.quable.data
 
 import com.quable.data.assets.AssetsModule
+import com.quable.domain.AdDetailsRepository
 import com.quable.domain.AdRepository
 import dagger.Binds
 import dagger.Module
@@ -14,4 +15,8 @@ interface DataModule {
     @Singleton
     @Binds
     fun bindAdsRepository(adRepository: AdRepositoryImpl): AdRepository
+
+    @Singleton
+    @Binds
+    fun bindAdsDetailsRepository(adDetailsRepository: AdDetailsRepositoryImpl): AdDetailsRepository
 }

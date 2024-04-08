@@ -16,9 +16,10 @@
         android:id="@+id/previewAdFragment"
         android:name="com.quable.kupujemprodajem.features.single.PreviewAdFragment"
         android:label="PreviewAdFragment">
+
         <argument
-            android:name="ad_view"
-            app:argType="com.quable.kupujemprodajem.features.AdView" />
+            android:name="ad_id"
+            app:argType="long" />
     </fragment>
 
 </navigation>

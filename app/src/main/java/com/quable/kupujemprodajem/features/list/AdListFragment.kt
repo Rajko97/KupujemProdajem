@@ -51,7 +51,7 @@ class AdListFragment : BaseActionBarFragment<FragmentAdListBinding, AdListViewMo
 
     private fun onItemClicked(item: AdView) {
         findNavController().navigate(
-            AdListFragmentDirections.actionAdListFragmentToPreviewAdFragment(item),
+            AdListFragmentDirections.actionAdListFragmentToPreviewAdFragment(item.id),
         )
     }
 }

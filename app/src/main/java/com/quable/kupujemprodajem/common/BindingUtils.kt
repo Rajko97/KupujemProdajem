@@ -20,13 +20,12 @@ import java.time.temporal.ChronoUnit
 
 @BindingAdapter("android:bindCurrency")
 fun TextView.addCurrency(currency: String?) {
-    post {
-        when (currency) {
-            "eur" -> this.append(" €")
-            "rsd" -> this.append(" din")
-            else -> this.append("DOGOVOR")
-        }
+    val newText = when (currency) {
+        "eur" -> "$text €"
+        "rsd" -> "$text din"
+        else -> "DOGOVOR"
     }
+    text = newText
 }
 
 @BindingAdapter("android:setPassedDays")

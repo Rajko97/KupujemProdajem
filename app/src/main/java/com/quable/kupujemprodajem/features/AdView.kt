@@ -1,10 +1,7 @@
 package com.quable.kupujemprodajem.features
 
-import android.os.Parcelable
 import com.quable.domain.models.Ad
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
 data class AdView(
     val id: Long,
     val posted: String,
@@ -16,7 +13,9 @@ data class AdView(
     val photoThumbnailUrl: String,
     val favoriteCount: Int,
     val isFollowingAd: Boolean,
-) : Parcelable {
+) {
+    constructor() : this(0, "2023-04-12 11:16:27", "", "", "", "", "", "", 0, false)
+
     override fun equals(other: Any?): Boolean {
         if (other is AdView) {
             return this.id == other.id && this.posted == other.posted && this.locationName == other.locationName &&

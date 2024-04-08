@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.quable.kupujemprodajem.BR
@@ -46,4 +47,10 @@ abstract class BaseFragment<BindingT : ViewDataBinding, ViewModelT : ViewModel> 
 
     @LayoutRes
     abstract fun provideLayoutId(): Int
+}
+
+fun <T> Fragment.observe(liveData: LiveData<T>, block: (value: T) -> Unit) {
+    liveData.observe(viewLifecycleOwner) {
+        block.invoke(it)
+    }
 }
