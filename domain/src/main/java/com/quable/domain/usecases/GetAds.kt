@@ -7,5 +7,5 @@ import javax.inject.Inject
 class GetAds @Inject constructor(
     private val adsRepository: AdRepository,
 ) {
-    fun execute(page: Int): AdsResponse = adsRepository.getAds(page)
+    fun execute(page: Int): AdsResponse = adsRepository.getAdsPaged(page)
 }

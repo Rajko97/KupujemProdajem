@@ -10,7 +10,7 @@ class AdRepositoryImpl @Inject constructor(
     private val assetsDataSource: AssetsDataSource,
 ) : AdRepository {
 
-    override fun getAds(page: Int?): AdsResponse {
+    override fun getAdsPaged(page: Int?): AdsResponse {
         return assetsDataSource.getAdsListPaged(page)
     }
 

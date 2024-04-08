@@ -5,7 +5,7 @@ import com.quable.domain.models.AdsResponse
 
 interface AdRepository {
 
-    fun getAds(page: Int? = 1): AdsResponse
+    fun getAdsPaged(page: Int? = 1): AdsResponse
 
     fun getAdById(adId: Long): Ad?
 
