@@ -13,6 +13,7 @@ import androidx.databinding.BindingAdapter
 import coil.load
 import coil.size.Scale
 import com.quable.kupujemprodajem.R
+import com.quable.kupujemprodajem.common.Constants.Companion.DATE_TIME_FORMAT
 import com.quable.kupujemprodajem.common.Constants.Companion.IMAGES_BASE_URL
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -29,7 +30,7 @@ fun TextView.addCurrency(currency: String?) {
     val newText = when (currency) {
         "eur" -> "$text €"
         "rsd" -> "$text din"
-        else -> "DOGOVOR"
+        else -> context.resources.getString(R.string.contact)
     }
     text = newText
 }
@@ -44,15 +45,16 @@ fun TextView.setPassedDays(dateTimeText: String) {
 
         val daysDifference = ChronoUnit.DAYS.between(date, today)
 
+        // ToDo refactor using string plurals and manage region
         return when {
-            date == today -> ", danas"
-            date == yesterday -> ", juče"
-            daysDifference % 10 == 1L -> ", pre $daysDifference dan"
-            else -> ", pre $daysDifference dana"
+            date == today -> ", ${context.resources.getString(R.string.today)}"
+            date == yesterday -> ", ${context.resources.getString(R.string.yesterday)}"
+            daysDifference % 10 == 1L -> ", ${context.resources.getString(R.string.before_days_one, daysDifference.toInt())}"
+            else -> ", ${context.resources.getString(R.string.before_days_other, daysDifference.toInt())}"
         }
     }
 
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+    val formatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT)
     val dateTime = LocalDateTime.parse(dateTimeText, formatter)
 
     text = getTextBasedOnDate(dateTime)
