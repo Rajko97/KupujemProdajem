@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
@@ -17,6 +18,11 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
+
+@BindingAdapter("android:visibility")
+fun View.setVisibility(visible: Boolean) {
+    this.visibility = if (visible) View.VISIBLE else View.GONE
+}
 
 @BindingAdapter("android:bindCurrency")
 fun TextView.addCurrency(currency: String?) {

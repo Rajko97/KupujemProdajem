@@ -30,18 +30,18 @@ class PreviewAdFragment :
             isSoundEffectsEnabled = false
         }
         viewModel.initializeData(args.adId)
-        binding.layoutScroll.setOnTouchListener(
-            SwipeGestureListener(requireContext()).apply {
-                onSwipeLeft = viewModel::onSwipeLeft
-                onSwipeRight = viewModel::onSwipeRight
-            },
-        )
+
+        SwipeGestureListener(requireContext()).apply {
+            onSwipeLeft = viewModel::onSwipeLeft
+            onSwipeRight = viewModel::onSwipeRight
+        }.run {
+            binding.layoutScroll.setOnTouchListener(this)
+            binding.layoutEmptyContent.setOnTouchListener(this)
+        }
     }
 
     override fun subscribeObservers() {
-        observe(viewModel.adBasicLive) {
-            binding.layoutId.vm = AdListItemViewModel(it)
-        }
+        observe(viewModel.adBasicLive) { binding.layoutId.vm = AdListItemViewModel(it) }
     }
 
     override fun onActionBack(): (() -> Unit) = {
